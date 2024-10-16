@@ -11,6 +11,5 @@ public class RecipeLoader {
         GTModHandler
             .addShapelessCraftingRecipe(ItemRegistry.VoidMinerEX2, new Object[] { ItemList.Machine_HV_Miner.get(1) });
         GTModHandler.addShapelessCraftingRecipe(ItemRegistry.VoidMinerEX3, new Object[] { ItemList.OreDrill1.get(1) });
-        GTModHandler.addShapelessCraftingRecipe(ItemRegistry.VoidMinerEX4, new Object[] { ItemList.OreDrill2.get(1) });
     }
 }

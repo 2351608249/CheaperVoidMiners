@@ -14,8 +14,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     acceptedMinecraftVersions = "[1.7.10]",
     dependencies = """
         required-after:gregtech;
-        required-after:bartworkscrossmod;
-        required-after:tectech;
         """)
 public class CheaperVoidMiners {
 

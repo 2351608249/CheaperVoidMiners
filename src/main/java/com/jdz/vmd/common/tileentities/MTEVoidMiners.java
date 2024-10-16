@@ -1,9 +1,11 @@
 package com.jdz.vmd.common.tileentities;
 
+import gregtech.api.GregTechAPI;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
+import gregtech.api.util.GTUtility;
 
 public class MTEVoidMiners {
 
@@ -29,7 +31,7 @@ public class MTEVoidMiners {
 
         @Override
         protected int getCasingTextureIndex() {
-            return 1;
+            return 16;
         }
 
         @Override
@@ -44,13 +46,13 @@ public class MTEVoidMiners {
 
     }
 
-    public static class VMMV extends MTEVoidMinerEXBase {
+    public static class VMHV extends MTEVoidMinerEXBase {
 
-        public VMMV(int aID, String aName, String aNameRegional) {
+        public VMHV(int aID, String aName, String aNameRegional) {
             super(aID, aName, aNameRegional, 8);
         }
 
-        public VMMV(String aName, int tier) {
+        public VMHV(String aName, int tier) {
             super(aName, tier);
         }
 
@@ -66,44 +68,7 @@ public class MTEVoidMiners {
 
         @Override
         protected int getCasingTextureIndex() {
-            return 2;
-        }
-
-        @Override
-        protected int getMinTier() {
-            return 2;
-        }
-
-        @Override
-        public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
-            return new VMMV(this.mName, this.TIER_MULTIPLIER);
-        }
-
-    }
-
-    public static class VMHV extends MTEVoidMinerEXBase {
-
-        public VMHV(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 16);
-        }
-
-        public VMHV(String aName, int tier) {
-            super(aName, tier);
-        }
-
-        @Override
-        protected ItemList getCasingBlockItem() {
-            return ItemList.Casing_StableTitanium;
-        }
-
-        @Override
-        protected Materials getFrameMaterial() {
-            return Materials.Titanium;
-        }
-
-        @Override
-        protected int getCasingTextureIndex() {
-            return 3;
+            return GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 1);
         }
 
         @Override
@@ -118,13 +83,13 @@ public class MTEVoidMiners {
 
     }
 
-    public static class VMEV extends MTEVoidMinerEXBase {
+    public static class VMIV extends MTEVoidMinerEXBase {
 
-        public VMEV(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 32);
+        public VMIV(int aID, String aName, String aNameRegional) {
+            super(aID, aName, aNameRegional, 16);
         }
 
-        public VMEV(String aName, int tier) {
+        public VMIV(String aName, int tier) {
             super(aName, tier);
         }
 
@@ -140,19 +105,18 @@ public class MTEVoidMiners {
 
         @Override
         protected int getCasingTextureIndex() {
-            return 4;
+            return GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 0);
         }
 
         @Override
         protected int getMinTier() {
-            return 4;
+            return 5;
         }
 
         @Override
         public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
-            return new VMEV(this.mName, this.TIER_MULTIPLIER);
+            return new VMIV(this.mName, this.TIER_MULTIPLIER);
         }
 
     }
-
 }
