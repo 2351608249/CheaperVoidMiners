@@ -2,11 +2,14 @@ package com.jdz.vmd.api.enums;
 
 public enum MetaTileEntityIDs {
 
-    VoidMinerEXController(71532);
+    VoidMinerEX1Controller(26763),
+    VoidMinerEX2Controller(26764),
+    VoidMinerEX3Controller(26765),
+    VoidMinerEX4Controller(26766);
 
     public final int ID;
 
-    private MetaTileEntityIDs(int ID) {
+    MetaTileEntityIDs(int ID) {
         this.ID = ID;
     }
 }

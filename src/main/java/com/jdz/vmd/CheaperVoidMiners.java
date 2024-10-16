@@ -1,8 +1,5 @@
 package com.jdz.vmd;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -11,19 +8,20 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
-    modid = VoidMinerDowntierMod.MODID,
+    modid = CheaperVoidMiners.MODID,
     version = Tags.VERSION,
-    name = "MyMod",
+    name = "CheaperVoidMiners",
     acceptedMinecraftVersions = "[1.7.10]",
     dependencies = """
-        required-after:IC2;\
-        required-after:gregtech;\"""")
-public class VoidMinerDowntierMod {
+        required-after:gregtech;
+        required-after:bartworkscrossmod;
+        required-after:tectech;
+        """)
+public class CheaperVoidMiners {
 
-    public static final String MODID = "mymodid";
-    public static final Logger LOG = LogManager.getLogger(MODID);
+    public static final String MODID = "cheapervoidminers";
 
-    @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
+    @SidedProxy(clientSide = "com.jdz.vmd.ClientProxy", serverSide = "com.jdz.vmd.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

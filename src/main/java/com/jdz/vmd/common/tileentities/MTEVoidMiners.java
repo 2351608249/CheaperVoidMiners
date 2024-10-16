@@ -1,39 +1,99 @@
 package com.jdz.vmd.common.tileentities;
 
-import static gregtech.api.enums.GTValues.VN;
-import static gregtech.api.enums.HatchElement.*;
-
-import java.util.List;
-
-import net.minecraft.util.EnumChatFormatting;
-
-import com.google.common.collect.ImmutableList;
-
-import bwcrossmod.galacticgreg.MTEVoidMinerBase;
-import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
-import gregtech.api.interfaces.IHatchElement;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-import gregtech.api.util.MultiblockTooltipBuilder;
-import gregtech.common.tileentities.machines.multi.MTEDrillerBase;
 
 public class MTEVoidMiners {
 
-    public static class VMEX extends MTEVoidMinerBase {
+    public static class VMLV extends MTEVoidMinerEXBase {
 
-        public VMEX(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 16);
+        public VMLV(int aID, String aName, String aNameRegional) {
+            super(aID, aName, aNameRegional, 4);
         }
 
-        public VMEX(String aName, int tier) {
+        public VMLV(String aName, int tier) {
             super(aName, tier);
         }
 
         @Override
         protected ItemList getCasingBlockItem() {
-            return ItemList.Casing_EV;
+            return ItemList.Casing_SolidSteel;
+        }
+
+        @Override
+        protected Materials getFrameMaterial() {
+            return Materials.Steel;
+        }
+
+        @Override
+        protected int getCasingTextureIndex() {
+            return 1;
+        }
+
+        @Override
+        protected int getMinTier() {
+            return 1; // LV
+        }
+
+        @Override
+        public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
+            return new VMLV(this.mName, this.TIER_MULTIPLIER);
+        }
+
+    }
+
+    public static class VMMV extends MTEVoidMinerEXBase {
+
+        public VMMV(int aID, String aName, String aNameRegional) {
+            super(aID, aName, aNameRegional, 8);
+        }
+
+        public VMMV(String aName, int tier) {
+            super(aName, tier);
+        }
+
+        @Override
+        protected ItemList getCasingBlockItem() {
+            return ItemList.Casing_CleanStainlessSteel;
+        }
+
+        @Override
+        protected Materials getFrameMaterial() {
+            return Materials.StainlessSteel;
+        }
+
+        @Override
+        protected int getCasingTextureIndex() {
+            return 2;
+        }
+
+        @Override
+        protected int getMinTier() {
+            return 2;
+        }
+
+        @Override
+        public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
+            return new VMMV(this.mName, this.TIER_MULTIPLIER);
+        }
+
+    }
+
+    public static class VMHV extends MTEVoidMinerEXBase {
+
+        public VMHV(int aID, String aName, String aNameRegional) {
+            super(aID, aName, aNameRegional, 16);
+        }
+
+        public VMHV(String aName, int tier) {
+            super(aName, tier);
+        }
+
+        @Override
+        protected ItemList getCasingBlockItem() {
+            return ItemList.Casing_StableTitanium;
         }
 
         @Override
@@ -43,59 +103,56 @@ public class MTEVoidMiners {
 
         @Override
         protected int getCasingTextureIndex() {
-            return 8;
+            return 3;
         }
 
         @Override
         protected int getMinTier() {
-            return 4; // EV
-        }
-
-        @Override
-        protected List<IHatchElement<? super MTEDrillerBase>> getAllowedHatches() {
-            return ImmutableList.of(InputBus, OutputBus, Maintenance, Energy);
-        }
-
-        @Override
-        protected MultiblockTooltipBuilder createTooltip() {
-            String casings = this.getCasingBlockItem()
-                .get(0)
-                .getDisplayName();
-
-            final MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
-            tt.addMachineType("Miner")
-                .addInfo("Controller Block for the Void Miner EX")
-                .addInfo("Consumes " + GTValues.V[this.getMinTier()] + "EU/t")
-                .addInfo("Does not support boosting with noble gasses.")
-                .addInfo(
-                    "Will output " + 2 * this.TIER_MULTIPLIER
-                        + " Ores per Second depending on the Dimension it is build in")
-                .addInfo("Put the Ore into the input bus to set the Whitelist/Blacklist")
-                .addInfo("Use a screwdriver to toggle Whitelist/Blacklist")
-                .addInfo(
-                    "Blacklist or non Whitelist Ore will be " + EnumChatFormatting.DARK_RED
-                        + "VOIDED"
-                        + EnumChatFormatting.RESET
-                        + ".")
-                .addSeparator()
-                .beginStructureBlock(3, 7, 3, false)
-                .addController("Front bottom")
-                .addOtherStructurePart(casings, "form the 3x1x3 Base")
-                .addOtherStructurePart(casings, "1x3x1 pillar above the center of the base (2 minimum total)")
-                .addOtherStructurePart(
-                    this.getFrameMaterial().mName + " Frame Boxes",
-                    "Each pillar's side and 1x3x1 on top")
-                .addEnergyHatch(VN[this.getMinTier()] + "+, Any base casing")
-                .addMaintenanceHatch("Any base casing")
-                .addInputBus("Mining Pipes or Ores, optional, any base casing")
-                .addInputHatch("Optional noble gas, any base casing")
-                .addOutputBus("Any base casing");
-            return tt;
+            return 3;
         }
 
         @Override
         public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
-            return new VMEX(this.mName, this.TIER_MULTIPLIER);
+            return new VMHV(this.mName, this.TIER_MULTIPLIER);
         }
+
     }
+
+    public static class VMEV extends MTEVoidMinerEXBase {
+
+        public VMEV(int aID, String aName, String aNameRegional) {
+            super(aID, aName, aNameRegional, 32);
+        }
+
+        public VMEV(String aName, int tier) {
+            super(aName, tier);
+        }
+
+        @Override
+        protected ItemList getCasingBlockItem() {
+            return ItemList.Casing_RobustTungstenSteel;
+        }
+
+        @Override
+        protected Materials getFrameMaterial() {
+            return Materials.TungstenSteel;
+        }
+
+        @Override
+        protected int getCasingTextureIndex() {
+            return 4;
+        }
+
+        @Override
+        protected int getMinTier() {
+            return 4;
+        }
+
+        @Override
+        public IMetaTileEntity newMetaEntity(IGregTechTileEntity iGregTechTileEntity) {
+            return new VMEV(this.mName, this.TIER_MULTIPLIER);
+        }
+
+    }
+
 }
