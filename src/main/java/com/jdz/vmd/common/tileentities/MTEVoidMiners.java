@@ -12,7 +12,7 @@ public class MTEVoidMiners {
     public static class VMLV extends MTEVoidMinerEXBase {
 
         public VMLV(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 4);
+            super(aID, aName, aNameRegional, 32);
         }
 
         public VMLV(String aName, int tier) {
@@ -49,7 +49,7 @@ public class MTEVoidMiners {
     public static class VMHV extends MTEVoidMinerEXBase {
 
         public VMHV(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 8);
+            super(aID, aName, aNameRegional, 64);
         }
 
         public VMHV(String aName, int tier) {
@@ -86,7 +86,7 @@ public class MTEVoidMiners {
     public static class VMIV extends MTEVoidMinerEXBase {
 
         public VMIV(int aID, String aName, String aNameRegional) {
-            super(aID, aName, aNameRegional, 16);
+            super(aID, aName, aNameRegional, 64);
         }
 
         public VMIV(String aName, int tier) {
